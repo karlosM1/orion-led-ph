@@ -12,12 +12,19 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as LandingAboutImport } from './routes/landing/about'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LandingAboutRoute = LandingAboutImport.update({
+  id: '/landing/about',
+  path: '/landing/about',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -32,6 +39,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/landing/about': {
+      id: '/landing/about'
+      path: '/landing/about'
+      fullPath: '/landing/about'
+      preLoaderRoute: typeof LandingAboutImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +53,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/landing/about': typeof LandingAboutRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/landing/about': typeof LandingAboutRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/landing/about': typeof LandingAboutRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/landing/about'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/landing/about'
+  id: '__root__' | '/' | '/landing/about'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LandingAboutRoute: typeof LandingAboutRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LandingAboutRoute: LandingAboutRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +96,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/landing/about"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/landing/about": {
+      "filePath": "landing/about.tsx"
     }
   }
 }

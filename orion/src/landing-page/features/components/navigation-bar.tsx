@@ -12,7 +12,6 @@ export function Header() {
         <nav className="flex items-center justify-between">
           <div className="text-2xl font-bold text-black">ORION</div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <a
               href="#"
@@ -40,7 +39,6 @@ export function Header() {
             </a>
           </div>
 
-          {/* Mobile Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon" aria-label="Menu">
