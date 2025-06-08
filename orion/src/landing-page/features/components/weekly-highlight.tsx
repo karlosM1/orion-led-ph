@@ -28,20 +28,6 @@ export function WeeklyHighlight() {
               generates lights that allow you to clearly see where you are
               headed, especially when driving under bad weather condition.
             </p>
-            <div className="space-y-2 text-xs md:text-sm">
-              <div className="flex justify-between">
-                <span className="text-gray-400">Engine:</span>
-                <span>2.9L V6 Twin-Turbo</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-400">Power:</span>
-                <span>434 HP</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-400">0-60 mph:</span>
-                <span>4.7 seconds</span>
-              </div>
-            </div>
           </CardContent>
         </Card>
       </div>

@@ -52,9 +52,7 @@ export const About = () => {
                 className="absolute inset-0 w-full h-full object-cover rounded-lg z-0"
                 style={{ filter: "brightness(0.7)" }}
               />
-              <CardContent className="relative z-10 bg-transparent">
-                {/* Add any overlay content here if needed */}
-              </CardContent>
+              <CardContent className="relative z-10 bg-transparent"></CardContent>
             </div>
           </Card>
           <Card className="bg-black text-white p-5 md:p-8">

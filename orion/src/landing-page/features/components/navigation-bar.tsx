@@ -2,41 +2,46 @@ import { useState } from "react";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Link } from "@tanstack/react-router";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="border-b border-gray-100 sticky top-0 bg-white/55 backdrop-blur-sm z-50">
+    <header className="sticky top-0 bg-white/55 backdrop-blur-sm z-50">
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
           <div className="text-2xl font-bold text-black">ORION</div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#"
-              className="text-black hover:text-gray-600 transition-colors"
+            <Link
+              to="/"
+              className="text-gray-600 hover:text-black transition-colors font-medium"
+              onClick={() => setIsOpen(false)}
             >
               Home
-            </a>
-            <a
-              href="#"
-              className="text-gray-600 hover:text-black transition-colors"
+            </Link>
+            <Link
+              to="/landing/about"
+              className="text-gray-600 hover:text-black transition-colors font-medium"
+              onClick={() => setIsOpen(false)}
             >
               About
-            </a>
-            <a
-              href="#"
-              className="text-gray-600 hover:text-black transition-colors"
+            </Link>
+            <Link
+              to="/landing/contact"
+              className="text-gray-600 hover:text-black transition-colors font-medium"
+              onClick={() => setIsOpen(false)}
             >
-              Community
-            </a>
-            <a
-              href="#"
-              className="text-gray-600 hover:text-black transition-colors"
+              Contact
+            </Link>
+            <Link
+              to="/landing/stock"
+              className="text-gray-600 hover:text-black transition-colors font-medium"
+              onClick={() => setIsOpen(false)}
             >
-              News
-            </a>
+              Stock
+            </Link>
           </div>
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>

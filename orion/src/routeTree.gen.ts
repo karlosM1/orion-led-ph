@@ -12,6 +12,8 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as LandingStockImport } from './routes/landing/stock'
+import { Route as LandingContactImport } from './routes/landing/contact'
 import { Route as LandingAboutImport } from './routes/landing/about'
 
 // Create/Update Routes
@@ -19,6 +21,18 @@ import { Route as LandingAboutImport } from './routes/landing/about'
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LandingStockRoute = LandingStockImport.update({
+  id: '/landing/stock',
+  path: '/landing/stock',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LandingContactRoute = LandingContactImport.update({
+  id: '/landing/contact',
+  path: '/landing/contact',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -46,6 +60,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LandingAboutImport
       parentRoute: typeof rootRoute
     }
+    '/landing/contact': {
+      id: '/landing/contact'
+      path: '/landing/contact'
+      fullPath: '/landing/contact'
+      preLoaderRoute: typeof LandingContactImport
+      parentRoute: typeof rootRoute
+    }
+    '/landing/stock': {
+      id: '/landing/stock'
+      path: '/landing/stock'
+      fullPath: '/landing/stock'
+      preLoaderRoute: typeof LandingStockImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -54,36 +82,51 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/landing/about': typeof LandingAboutRoute
+  '/landing/contact': typeof LandingContactRoute
+  '/landing/stock': typeof LandingStockRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/landing/about': typeof LandingAboutRoute
+  '/landing/contact': typeof LandingContactRoute
+  '/landing/stock': typeof LandingStockRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/landing/about': typeof LandingAboutRoute
+  '/landing/contact': typeof LandingContactRoute
+  '/landing/stock': typeof LandingStockRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/landing/about'
+  fullPaths: '/' | '/landing/about' | '/landing/contact' | '/landing/stock'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/landing/about'
-  id: '__root__' | '/' | '/landing/about'
+  to: '/' | '/landing/about' | '/landing/contact' | '/landing/stock'
+  id:
+    | '__root__'
+    | '/'
+    | '/landing/about'
+    | '/landing/contact'
+    | '/landing/stock'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LandingAboutRoute: typeof LandingAboutRoute
+  LandingContactRoute: typeof LandingContactRoute
+  LandingStockRoute: typeof LandingStockRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LandingAboutRoute: LandingAboutRoute,
+  LandingContactRoute: LandingContactRoute,
+  LandingStockRoute: LandingStockRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,7 +140,9 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/landing/about"
+        "/landing/about",
+        "/landing/contact",
+        "/landing/stock"
       ]
     },
     "/": {
@@ -105,6 +150,12 @@ export const routeTree = rootRoute
     },
     "/landing/about": {
       "filePath": "landing/about.tsx"
+    },
+    "/landing/contact": {
+      "filePath": "landing/contact.tsx"
+    },
+    "/landing/stock": {
+      "filePath": "landing/stock.tsx"
     }
   }
 }

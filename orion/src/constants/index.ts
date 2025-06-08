@@ -16,6 +16,7 @@ import bulb13 from "../assets/img/ed94af13c44053c17a546df8139b2833.jpeg";
 import bulb14 from "../assets/img/f6a93da92f254155ede3c01c12664016.jpeg";
 import macan from "../assets/img/macan.png";
 import aboutcar from "../assets/img/about-car.png";
+import car2 from "../assets/img/car2.png";
 
 export const images = {
   texturatc,
@@ -36,4 +37,5 @@ export const images = {
   bulb14,
   macan,
   aboutcar,
+  car2,
 };
