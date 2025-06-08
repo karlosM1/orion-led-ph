@@ -12,6 +12,8 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as StockIndexImport } from './routes/stock/index'
+import { Route as StockProductIdImport } from './routes/stock/$productId'
 import { Route as LandingStockImport } from './routes/landing/stock'
 import { Route as LandingContactImport } from './routes/landing/contact'
 import { Route as LandingAboutImport } from './routes/landing/about'
@@ -21,6 +23,18 @@ import { Route as LandingAboutImport } from './routes/landing/about'
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const StockIndexRoute = StockIndexImport.update({
+  id: '/stock/',
+  path: '/stock/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const StockProductIdRoute = StockProductIdImport.update({
+  id: '/stock/$productId',
+  path: '/stock/$productId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -74,6 +88,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LandingStockImport
       parentRoute: typeof rootRoute
     }
+    '/stock/$productId': {
+      id: '/stock/$productId'
+      path: '/stock/$productId'
+      fullPath: '/stock/$productId'
+      preLoaderRoute: typeof StockProductIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/stock/': {
+      id: '/stock/'
+      path: '/stock'
+      fullPath: '/stock'
+      preLoaderRoute: typeof StockIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -84,6 +112,8 @@ export interface FileRoutesByFullPath {
   '/landing/about': typeof LandingAboutRoute
   '/landing/contact': typeof LandingContactRoute
   '/landing/stock': typeof LandingStockRoute
+  '/stock/$productId': typeof StockProductIdRoute
+  '/stock': typeof StockIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -91,6 +121,8 @@ export interface FileRoutesByTo {
   '/landing/about': typeof LandingAboutRoute
   '/landing/contact': typeof LandingContactRoute
   '/landing/stock': typeof LandingStockRoute
+  '/stock/$productId': typeof StockProductIdRoute
+  '/stock': typeof StockIndexRoute
 }
 
 export interface FileRoutesById {
@@ -99,19 +131,35 @@ export interface FileRoutesById {
   '/landing/about': typeof LandingAboutRoute
   '/landing/contact': typeof LandingContactRoute
   '/landing/stock': typeof LandingStockRoute
+  '/stock/$productId': typeof StockProductIdRoute
+  '/stock/': typeof StockIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/landing/about' | '/landing/contact' | '/landing/stock'
+  fullPaths:
+    | '/'
+    | '/landing/about'
+    | '/landing/contact'
+    | '/landing/stock'
+    | '/stock/$productId'
+    | '/stock'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/landing/about' | '/landing/contact' | '/landing/stock'
+  to:
+    | '/'
+    | '/landing/about'
+    | '/landing/contact'
+    | '/landing/stock'
+    | '/stock/$productId'
+    | '/stock'
   id:
     | '__root__'
     | '/'
     | '/landing/about'
     | '/landing/contact'
     | '/landing/stock'
+    | '/stock/$productId'
+    | '/stock/'
   fileRoutesById: FileRoutesById
 }
 
@@ -120,6 +168,8 @@ export interface RootRouteChildren {
   LandingAboutRoute: typeof LandingAboutRoute
   LandingContactRoute: typeof LandingContactRoute
   LandingStockRoute: typeof LandingStockRoute
+  StockProductIdRoute: typeof StockProductIdRoute
+  StockIndexRoute: typeof StockIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -127,6 +177,8 @@ const rootRouteChildren: RootRouteChildren = {
   LandingAboutRoute: LandingAboutRoute,
   LandingContactRoute: LandingContactRoute,
   LandingStockRoute: LandingStockRoute,
+  StockProductIdRoute: StockProductIdRoute,
+  StockIndexRoute: StockIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -142,7 +194,9 @@ export const routeTree = rootRoute
         "/",
         "/landing/about",
         "/landing/contact",
-        "/landing/stock"
+        "/landing/stock",
+        "/stock/$productId",
+        "/stock/"
       ]
     },
     "/": {
@@ -156,6 +210,12 @@ export const routeTree = rootRoute
     },
     "/landing/stock": {
       "filePath": "landing/stock.tsx"
+    },
+    "/stock/$productId": {
+      "filePath": "stock/$productId.tsx"
+    },
+    "/stock/": {
+      "filePath": "stock/index.tsx"
     }
   }
 }

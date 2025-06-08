@@ -11,12 +11,13 @@ import {
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { products } from "@/lib/product";
 import { Header } from "./components/navigation-bar";
 import { Footer } from "./components/footer";
-import { products } from "@/data/product";
 
 export function StockPage() {
-  const [lumensRange, setLumensRange] = useState("30-50");
+  // const [lumensRange, setLumensRange] = useState("30-50");
   const [priceRange, setPriceRange] = useState([1000, 10000]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
@@ -32,8 +33,8 @@ export function StockPage() {
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold text-black mb-8">Our Models</h1>
 
-          <div className="flex gap-8">
-            <div className="w-80 space-y-6">
+          <div className="flex flex-col lg:flex-row gap-8">
+            <div className="w-full lg:w-80 space-y-6">
               <Card className="p-6">
                 <div className="space-y-4">
                   <div>
@@ -105,17 +106,18 @@ export function StockPage() {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      BULB SIZE
+                      LUMENS
                     </label>
-                    <Select value={lumensRange} onValueChange={setLumensRange}>
+                    <Select>
                       <SelectTrigger className="w-full h-12 border border-gray-200 bg-white">
                         <SelectValue placeholder="Select lumens" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="10-30">H11</SelectItem>
-                        <SelectItem value="30-50">H8</SelectItem>
-                        <SelectItem value="50-70">H9</SelectItem>
-                        <SelectItem value="70-100">H16</SelectItem>
+                        <SelectItem value="10-30">10-30 lumens</SelectItem>
+                        <SelectItem value="30-50">30-50 lumens</SelectItem>
+                        <SelectItem value="50-70">50-70 lumens</SelectItem>
+                        <SelectItem value="70-100">70-100 lumens</SelectItem>
+                        <SelectItem value="100+">100+ lumens</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -146,41 +148,43 @@ export function StockPage() {
                 </div>
               </Card>
             </div>
-
             <div className="flex-1">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 {currentProducts.map((product) => (
-                  <Card
+                  <Link
+                    to="/stock/$productId"
+                    params={{ productId: product.id }}
                     key={product.id}
-                    className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
                   >
-                    <CardContent className="p-0">
-                      <div className="relative">
-                        <img
-                          src={product.image || "/placeholder.svg"}
-                          alt={product.name}
-                          width={300}
-                          height={200}
-                          className="w-full h-48 object-cover"
-                        />
-                        {product.badge && (
-                          <Badge
-                            className={`absolute top-3 right-3 text-white ${product.badgeColor || "bg-blue-500"}`}
-                          >
-                            {product.badge}
-                          </Badge>
-                        )}
-                      </div>
-                      <div className="p-4">
-                        <h3 className="font-semibold text-gray-900 mb-2">
-                          {product.name}
-                        </h3>
-                        <p className="text-xl font-bold text-black">
-                          ${product.price.toLocaleString()}.00
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                    <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer h-full">
+                      <CardContent className="p-0">
+                        <div className="relative">
+                          <img
+                            src={product.image || "/placeholder.svg"}
+                            alt={product.name}
+                            width={300}
+                            height={200}
+                            className="w-full h-48 object-cover"
+                          />
+                          {product.badge && (
+                            <Badge
+                              className={`absolute top-3 right-3 text-white ${product.badgeColor || "bg-blue-500"}`}
+                            >
+                              {product.badge}
+                            </Badge>
+                          )}
+                        </div>
+                        <div className="p-4">
+                          <h3 className="font-semibold text-gray-900 mb-2">
+                            {product.name}
+                          </h3>
+                          <p className="text-xl font-bold text-black">
+                            ₱{product.price.toLocaleString()}.00
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 ))}
               </div>
 
