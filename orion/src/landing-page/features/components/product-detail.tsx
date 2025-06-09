@@ -1,11 +1,11 @@
-"use client";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import type { Product } from "@/lib/product";
+import { useCart } from "@/lib/cart";
+import { toast } from "sonner";
 import { Header } from "./navigation-bar";
 import { Footer } from "./footer";
 
@@ -15,6 +15,7 @@ interface ProductDetailProps {
 
 export function ProductDetail({ product }: ProductDetailProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { addItem } = useCart();
   const images = [
     "/placeholder.svg?height=400&width=400",
     "/placeholder.svg?height=400&width=400",
@@ -27,6 +28,26 @@ export function ProductDetail({ product }: ProductDetailProps) {
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleAddToCart = () => {
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image || "/placeholder.svg",
+    });
+
+    toast.success(`${product.name} added to cart`, {
+      description: "Item has been successfully added to your cart.",
+      action: {
+        label: "View Cart",
+        onClick: () => {
+          window.history.pushState({}, "", "/cart");
+          window.dispatchEvent(new PopStateEvent("popstate"));
+        },
+      },
+    });
   };
 
   return (
@@ -68,9 +89,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
               <div className="mb-2 text-gray-500 uppercase tracking-wide text-sm">
                 ORION
               </div>
-              <h1 className="text-3xl font-bold text-black mb-6">
-                {product.name}
-              </h1>
+              <h1 className="text-3xl font-bold text-black mb-6">MAX HVN</h1>
 
               <div className="grid grid-cols-2 gap-8 mb-6">
                 <div>
@@ -86,17 +105,21 @@ export function ProductDetail({ product }: ProductDetailProps) {
               </div>
 
               <div className="text-3xl font-bold mb-6">
-                ₱ {product.price.toLocaleString()}.00
+                ₱{product.price.toLocaleString()}.00
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button className="bg-black text-white hover:bg-gray-800 rounded-full">
-                  Check Out
-                </Button>
+                <Link to="/checkout">
+                  <Button className="bg-black text-white hover:bg-gray-800 rounded-full">
+                    Check Out
+                  </Button>
+                </Link>
                 <Button
                   variant="outline"
-                  className="bg-gray-200 text-black hover:bg-gray-300 border-0 rounded-full"
+                  className="bg-gray-200 text-black hover:bg-gray-300 border-0 rounded-full flex items-center gap-2"
+                  onClick={handleAddToCart}
                 >
+                  <ShoppingCart className="h-4 w-4" />
                   Add to Cart
                 </Button>
               </div>

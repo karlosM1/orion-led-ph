@@ -11,6 +11,8 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as CheckoutImport } from './routes/checkout'
+import { Route as CartImport } from './routes/cart'
 import { Route as IndexImport } from './routes/index'
 import { Route as StockIndexImport } from './routes/stock/index'
 import { Route as StockProductIdImport } from './routes/stock/$productId'
@@ -19,6 +21,18 @@ import { Route as LandingContactImport } from './routes/landing/contact'
 import { Route as LandingAboutImport } from './routes/landing/about'
 
 // Create/Update Routes
+
+const CheckoutRoute = CheckoutImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CartRoute = CartImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -67,6 +81,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartImport
+      parentRoute: typeof rootRoute
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutImport
+      parentRoute: typeof rootRoute
+    }
     '/landing/about': {
       id: '/landing/about'
       path: '/landing/about'
@@ -109,6 +137,8 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/landing/about': typeof LandingAboutRoute
   '/landing/contact': typeof LandingContactRoute
   '/landing/stock': typeof LandingStockRoute
@@ -118,6 +148,8 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/landing/about': typeof LandingAboutRoute
   '/landing/contact': typeof LandingContactRoute
   '/landing/stock': typeof LandingStockRoute
@@ -128,6 +160,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/landing/about': typeof LandingAboutRoute
   '/landing/contact': typeof LandingContactRoute
   '/landing/stock': typeof LandingStockRoute
@@ -139,6 +173,8 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/cart'
+    | '/checkout'
     | '/landing/about'
     | '/landing/contact'
     | '/landing/stock'
@@ -147,6 +183,8 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/cart'
+    | '/checkout'
     | '/landing/about'
     | '/landing/contact'
     | '/landing/stock'
@@ -155,6 +193,8 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/cart'
+    | '/checkout'
     | '/landing/about'
     | '/landing/contact'
     | '/landing/stock'
@@ -165,6 +205,8 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
   LandingAboutRoute: typeof LandingAboutRoute
   LandingContactRoute: typeof LandingContactRoute
   LandingStockRoute: typeof LandingStockRoute
@@ -174,6 +216,8 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
   LandingAboutRoute: LandingAboutRoute,
   LandingContactRoute: LandingContactRoute,
   LandingStockRoute: LandingStockRoute,
@@ -192,6 +236,8 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/cart",
+        "/checkout",
         "/landing/about",
         "/landing/contact",
         "/landing/stock",
@@ -201,6 +247,12 @@ export const routeTree = rootRoute
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/cart": {
+      "filePath": "cart.tsx"
+    },
+    "/checkout": {
+      "filePath": "checkout.tsx"
     },
     "/landing/about": {
       "filePath": "landing/about.tsx"

@@ -17,6 +17,8 @@ import bulb14 from "../assets/img/f6a93da92f254155ede3c01c12664016.jpeg";
 import macan from "../assets/img/macan.png";
 import aboutcar from "../assets/img/about-car.png";
 import car2 from "../assets/img/car2.png";
+import logo from "../assets/img/orionlogo.png";
+import orion from "../assets/img/orion.png";
 
 export const images = {
   texturatc,
@@ -38,4 +40,6 @@ export const images = {
   macan,
   aboutcar,
   car2,
+  logo,
+  orion,
 };
