@@ -5,12 +5,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "@tanstack/react-router";
 import { ShoppingCart } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { useCart } from "@/lib/cart";
+import { useCartTotals } from "@/lib/cart";
 import { images } from "@/constants";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { totalItems } = useCart();
+  const { totalItems } = useCartTotals();
 
   return (
     <header className="sticky top-0 bg-white/55 backdrop-blur-sm z-50">
