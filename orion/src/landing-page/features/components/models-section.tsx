@@ -30,7 +30,7 @@ export function ModelsSection() {
           <CardContent className="p-0">
             <div className="relative flex items-center justify-center">
               <img
-                src={images.bulb7}
+                src={images.bulb1}
                 alt="Car Model"
                 width={300}
                 height={240}
@@ -47,7 +47,7 @@ export function ModelsSection() {
           <CardContent className="p-0 m-0">
             <div className="relative flex items-center justify-center">
               <img
-                src={images.bulb6}
+                src={images.bulb15}
                 alt="Car Model"
                 width={300}
                 height={240}
