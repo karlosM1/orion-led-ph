@@ -9,14 +9,14 @@ export function ModelsSection() {
         Models
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-        <Card className="overflow-hidden">
+        <Card className="overflow-hidden p-0">
           <CardContent className="p-0">
-            <div className="relative h-48 bg-gray-900">
+            <div className="relative h-60 bg-gray-900">
               <img
                 src={images.bulb13}
                 alt="Car Interior"
                 width={300}
-                height={200}
+                height={240}
                 className="w-full h-full object-cover"
               />
               <Badge className="absolute top-4 left-4 bg-black text-white">
@@ -25,28 +25,29 @@ export function ModelsSection() {
             </div>
           </CardContent>
         </Card>
-        <Card className="overflow-hidden">
+        <Card className="overflow-hidden p-0">
           <CardContent className="p-0">
-            <div className="relative h-48 bg-blue-500">
+            <div className="relative h-60 bg-blue-500">
               <img
                 src={images.bulb2}
                 alt="Car Model"
                 width={300}
-                height={200}
+                height={240}
                 className="w-full h-full object-cover"
               />
             </div>
           </CardContent>
         </Card>
-        <Card className="overflow-hidden sm:col-span-2 md:col-span-1">
-          <CardContent className="p-0">
-            <div className="relative h-48 bg-red-500">
+        <Card className="overflow-hidden sm:col-span-2 md:col-span-1 p-0 m-0">
+          <CardContent className="p-0 m-0">
+            <div className="relative h-60 bg-red-500 p-0 m-0">
               <img
-                src={images.bulb3}
+                src={images.bulb6}
                 alt="Car Model"
                 width={300}
-                height={200}
-                className="w-full h-full object-cover"
+                height={240}
+                className="w-full h-full object-cover p-0 m-0"
+                style={{ display: "block" }}
               />
             </div>
           </CardContent>
