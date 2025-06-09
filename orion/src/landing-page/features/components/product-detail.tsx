@@ -8,6 +8,7 @@ import { useCart } from "@/lib/cart";
 import { toast } from "sonner";
 import { Header } from "./navigation-bar";
 import { Footer } from "./footer";
+import { images } from "@/constants";
 
 interface ProductDetailProps {
   product: Product;
@@ -16,18 +17,14 @@ interface ProductDetailProps {
 export function ProductDetail({ product }: ProductDetailProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { addItem } = useCart();
-  const images = [
-    "/placeholder.svg?height=400&width=400",
-    "/placeholder.svg?height=400&width=400",
-    "/placeholder.svg?height=400&width=400",
-  ];
+  const image = [images.bulb1, images.bulb2, images.bulb3];
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    setCurrentImageIndex((prev) => (prev + 1) % image.length);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    setCurrentImageIndex((prev) => (prev - 1 + image.length) % image.length);
   };
 
   const handleAddToCart = () => {
@@ -109,14 +106,14 @@ export function ProductDetail({ product }: ProductDetailProps) {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <Link to="/checkout">
-                  <Button className="bg-black text-white hover:bg-gray-800 rounded-full">
+                <Link to="/checkout" className="w-full sm:w-auto">
+                  <Button className="w-full sm:w-auto bg-black text-white hover:bg-gray-800 rounded-full">
                     Check Out
                   </Button>
                 </Link>
                 <Button
                   variant="outline"
-                  className="bg-gray-200 text-black hover:bg-gray-300 border-0 rounded-full flex items-center gap-2"
+                  className="w-full sm:w-auto bg-gray-200 text-black hover:bg-gray-300 border-0 rounded-full flex items-center gap-2"
                   onClick={handleAddToCart}
                 >
                   <ShoppingCart className="h-4 w-4" />
@@ -163,7 +160,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
                 <div className="relative">
                   <div className="flex items-center justify-center mb-4">
                     <img
-                      src={images[currentImageIndex] || "/placeholder.svg"}
+                      src={image[currentImageIndex] || "/placeholder.svg"}
                       alt={`${product.name} - Image ${currentImageIndex + 1}`}
                       width={600}
                       height={400}
@@ -173,7 +170,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
 
                   <div className="flex items-center justify-center gap-4">
                     <span className="text-sm text-gray-500">
-                      {currentImageIndex + 1} / {images.length}
+                      {currentImageIndex + 1} / {image.length}
                     </span>
                     <Button
                       variant="outline"

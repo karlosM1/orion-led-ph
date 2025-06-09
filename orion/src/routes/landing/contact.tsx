@@ -40,7 +40,6 @@ function RouteComponent() {
         <section className="container mx-auto px-4 py-8 md:py-16">
           <h3 className="text-xl md:text-2xl font-bold mb-6">Contact</h3>
           <div className="grid lg:grid-cols-2 gap-8 items-center">
-            {/* Contact Buttons */}
             <div className="flex flex-col gap-4 w-full">
               {contact.map((btn) => (
                 <ContactButton
@@ -53,7 +52,6 @@ function RouteComponent() {
               ))}
             </div>
 
-            {/* Image */}
             <div className="flex justify-center lg:justify-end">
               <img
                 src={images.car2}
