@@ -35,35 +35,37 @@ const contact = [
 function RouteComponent() {
   return (
     <>
-      <Header />
-      <section className="container mx-auto px-4 py-8 md:py-16">
-        <h3 className="text-xl md:text-2xl font-bold mb-10 md:mb-10">
-          Contact
-        </h3>
-        <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
-          <div className="flex flex-col gap-4 w-full">
-            {contact.map((btn) => (
-              <ContactButton
-                key={btn.buttonLabel}
-                buttonLabel={btn.buttonLabel}
-                icon={btn.icon}
-                href={btn.href}
-                className="w-full h-12"
+      <>
+        <Header />
+        <section className="container mx-auto px-4 py-8 md:py-16">
+          <h3 className="text-xl md:text-2xl font-bold mb-6">Contact</h3>
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            {/* Contact Buttons */}
+            <div className="flex flex-col gap-4 w-full">
+              {contact.map((btn) => (
+                <ContactButton
+                  key={btn.buttonLabel}
+                  buttonLabel={btn.buttonLabel}
+                  icon={btn.icon}
+                  href={btn.href}
+                  className="w-full h-12"
+                />
+              ))}
+            </div>
+
+            {/* Image */}
+            <div className="flex justify-center lg:justify-end">
+              <img
+                src={images.car2}
+                alt="Sports Car"
+                className="w-full h-auto max-w-md md:max-w-lg lg:max-w-xl object-contain transform scale-100 lg:scale-110 lg:translate-x-12 transition-all duration-300"
               />
-            ))}
+            </div>
           </div>
-          <div>
-            <img
-              src={images.car2}
-              alt="Sports Car"
-              className="w-full h-auto max-w-none scale-125 lg:scale-120 lg:translate-x-72"
-              style={{ minHeight: "300px", minWidth: "300px" }}
-            />
-          </div>
-        </div>
-      </section>
-      <SearchSection />
-      <Footer />
+        </section>
+        <SearchSection />
+        <Footer />
+      </>
     </>
   );
 }
