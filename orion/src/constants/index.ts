@@ -14,7 +14,6 @@ import bulb11 from "../assets/img/d4f47c0cfb984a456431f6a51451e4d5.jpeg";
 import bulb12 from "../assets/img/e30a96148a58bafa70dd9d2eddbe67fa.jpeg";
 import bulb13 from "../assets/img/ed94af13c44053c17a546df8139b2833.jpeg";
 import bulb14 from "../assets/img/f6a93da92f254155ede3c01c12664016.jpeg";
-import macan from "../assets/img/macan.png";
 import aboutcar from "../assets/img/about-car.png";
 import car2 from "../assets/img/car2.png";
 import logo from "../assets/img/orionlogo.png";
@@ -42,7 +41,6 @@ export const images = {
   bulb12,
   bulb13,
   bulb14,
-  macan,
   aboutcar,
   car2,
   logo,
