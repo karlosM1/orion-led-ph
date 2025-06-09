@@ -58,8 +58,7 @@ export const About = () => {
                 MISSION
               </h3>
               <p className="text-gray-300 mb-2 md:mb-6 text-sm md:text-base">
-                To deliver high-quality, innovative car lighting solutions that
-                enhance safety, style, and performance on every journey.
+                To enhance the safety of every vehicle in the Philippines
               </p>
             </CardContent>
           </Card>
@@ -69,9 +68,9 @@ export const About = () => {
                 VISION
               </h3>
               <p className="text-gray-300 mb-2 md:mb-6 text-sm md:text-base">
-                To become a leading global brand in automotive
-                lighting—recognized for excellence, trusted by drivers, and
-                driven by a passion for illuminating the future of mobility.
+                to lead the global automotive industry as the premier provider
+                of lighting solution setting the highest standard of production
+                and services
               </p>
             </CardContent>
           </Card>
