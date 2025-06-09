@@ -15,8 +15,8 @@ interface CartState {
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
-  totalItems: number;
-  totalPrice: number;
+  getTotalItems: () => number;
+  getTotalPrice: () => number;
 }
 
 export const useCart = create<CartState>()(
@@ -46,19 +46,25 @@ export const useCart = create<CartState>()(
 
       updateQuantity: (id, quantity) => {
         const { items } = get();
-        set({
-          items: items.map((i) => (i.id === id ? { ...i, quantity } : i)),
-        });
+        if (quantity <= 0) {
+          set({ items: items.filter((i) => i.id !== id) });
+        } else {
+          set({
+            items: items.map((i) => (i.id === id ? { ...i, quantity } : i)),
+          });
+        }
       },
 
       clearCart: () => set({ items: [] }),
 
-      get totalItems() {
-        return get().items.reduce((total, item) => total + item.quantity, 0);
+      getTotalItems: () => {
+        const { items } = get();
+        return items.reduce((total, item) => total + item.quantity, 0);
       },
 
-      get totalPrice() {
-        return get().items.reduce(
+      getTotalPrice: () => {
+        const { items } = get();
+        return items.reduce(
           (total, item) => total + item.price * item.quantity,
           0
         );
@@ -69,3 +75,15 @@ export const useCart = create<CartState>()(
     }
   )
 );
+
+export const useCartTotals = () => {
+  const items = useCart((state) => state.items);
+  const getTotalItems = useCart((state) => state.getTotalItems);
+  const getTotalPrice = useCart((state) => state.getTotalPrice);
+
+  return {
+    items,
+    totalItems: getTotalItems(),
+    totalPrice: getTotalPrice(),
+  };
+};

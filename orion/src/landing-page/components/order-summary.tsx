@@ -8,16 +8,12 @@ interface OrderSummaryProps {
 }
 
 export function OrderSummary({ items, totalPrice }: OrderSummaryProps) {
-  // Calculate shipping cost (free over $1000)
   const shippingCost = totalPrice > 1000 ? 0 : 50;
 
-  // Calculate tax (8.5%)
   const taxRate = 0.085;
-  const taxAmount = totalPrice * taxRate;
+  const taxAmount = Math.round(totalPrice * taxRate * 100) / 100;
 
-  // Calculate final total
   const finalTotal = totalPrice + shippingCost + taxAmount;
-  console.log("Final Total:", finalTotal);
 
   return (
     <Card>
@@ -68,23 +64,12 @@ export function OrderSummary({ items, totalPrice }: OrderSummaryProps) {
           </div>
           <div className="flex justify-between">
             <span className="text-gray-600">Tax (8.5%)</span>
-            <span className="font-medium">
-              ₱
-              {taxAmount.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-            </span>
+            <span className="font-medium">₱{taxAmount.toFixed(2)}</span>
           </div>
           <Separator />
           <div className="flex justify-between text-lg font-bold">
             <span>Total</span>
-            <span>
-              {finalTotal.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-            </span>
+            <span>₱{finalTotal.toFixed(2)}</span>
           </div>
         </div>
       </CardContent>

@@ -3,25 +3,26 @@ import type React from "react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import { useCart } from "@/lib/cart";
+import { useCartTotals } from "@/lib/cart";
 import { ChevronLeft } from "lucide-react";
 import { CheckoutForm } from "../components/checkout-form";
 import { OrderSummary } from "../components/order-summary";
+import { toast } from "sonner";
 import { Header } from "./components/navigation-bar";
 import { Footer } from "./components/footer";
-import { toast } from "sonner";
+import { useNavigate } from "@tanstack/react-router";
 
 export function CheckoutPage() {
-  const { items, totalPrice, clearCart } = useCart();
+  const { items, totalPrice } = useCartTotals();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    clearCart();
 
     toast.success("Order placed successfully!", {
       description:
@@ -30,6 +31,10 @@ export function CheckoutPage() {
     });
 
     setIsSubmitting(false);
+
+    setTimeout(() => {
+      navigate({ to: "/landing/stock" });
+    }, 500);
   };
 
   return (

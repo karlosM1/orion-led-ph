@@ -62,7 +62,7 @@ export function CheckoutForm() {
                   <SelectValue placeholder="Select country" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="us">United States</SelectItem>
+                  <SelectItem value="ph">Philippines</SelectItem>
                   <SelectItem value="ca">Canada</SelectItem>
                   <SelectItem value="mx">Mexico</SelectItem>
                   <SelectItem value="uk">United Kingdom</SelectItem>
@@ -73,7 +73,6 @@ export function CheckoutForm() {
         </CardContent>
       </Card>
 
-      {/* Billing Information */}
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center gap-2 mb-6">
@@ -136,7 +135,6 @@ export function CheckoutForm() {
         </CardContent>
       </Card>
 
-      {/* Payment Information */}
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center gap-2 mb-6">

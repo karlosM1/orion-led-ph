@@ -3,14 +3,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "@tanstack/react-router";
 import { CartItem } from "../components/cart-item";
-import { useCart } from "@/lib/cart";
-import { ShoppingBag, ChevronLeft, ArrowRight } from "lucide-react";
+import { useCart, useCartTotals } from "@/lib/cart";
+import { ShoppingBag, ArrowRight, ChevronLeft } from "lucide-react";
 import { Header } from "./components/navigation-bar";
 import { Footer } from "./components/footer";
 
 export function CartPage() {
-  const { items, removeItem, updateQuantity, clearCart, totalPrice } =
-    useCart();
+  const { removeItem, updateQuantity, clearCart } = useCart();
+  const { items, totalItems, totalPrice } = useCartTotals();
 
   return (
     <>
@@ -107,7 +107,9 @@ export function CartPage() {
                     </h2>
                     <div className="space-y-3">
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Subtotal</span>
+                        <span className="text-gray-600">
+                          Subtotal ({totalItems} items)
+                        </span>
                         <span className="font-medium">
                           ₱{totalPrice.toLocaleString()}.00
                         </span>
