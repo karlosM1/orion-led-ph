@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { images } from "@/constants";
 
 export function LatestSales() {
   return (
@@ -8,50 +9,44 @@ export function LatestSales() {
         Latest sales
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-        <Card className="overflow-hidden">
+        <Card className="overflow-hidden m-0 p-0">
           <CardContent className="p-0">
-            <div className="relative h-48">
+            <div className="relative w-full aspect-[3/2]">
               <img
-                src="/placeholder.svg?height=200&width=300"
+                src={images.role1}
                 alt="Car Wheel"
-                width={300}
-                height={200}
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
               <Badge className="absolute bottom-4 left-4 bg-white text-black">
-                SOLD OUT
+                Orion PH Cavite
               </Badge>
             </div>
           </CardContent>
         </Card>
-        <Card className="overflow-hidden">
+        <Card className="overflow-hidden m-0 p-0">
           <CardContent className="p-0">
-            <div className="relative h-48">
+            <div className="relative w-full aspect-[3/2]">
               <img
-                src="/placeholder.svg?height=200&width=300"
-                alt="Car Interior"
-                width={300}
-                height={200}
-                className="w-full h-full object-cover"
+                src={images.role2}
+                alt="Car Wheel"
+                className="absolute inset-0 w-full h-full object-cover"
               />
               <Badge className="absolute bottom-4 left-4 bg-white text-black">
-                AVAILABLE
+                Orion PH Cavite
               </Badge>
             </div>
           </CardContent>
         </Card>
-        <Card className="overflow-hidden sm:col-span-2 md:col-span-1">
+        <Card className="overflow-hidden m-0 p-0">
           <CardContent className="p-0">
-            <div className="relative h-48">
+            <div className="relative w-full aspect-[3/2]">
               <img
-                src="/placeholder.svg?height=200&width=300"
-                alt="Boat"
-                width={300}
-                height={200}
-                className="w-full h-full object-cover"
+                src={images.role3}
+                alt="Car Wheel"
+                className="absolute inset-0 w-full h-full object-cover"
               />
               <Badge className="absolute bottom-4 left-4 bg-white text-black">
-                RESERVED
+                Orion PH Parañaque
               </Badge>
             </div>
           </CardContent>

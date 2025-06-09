@@ -37,18 +37,10 @@ export function SearchSection() {
               </SelectContent>
             </Select>
 
-            <Select>
-              <SelectTrigger className="w-full h-12 border border-gray-200 bg-white">
-                <SelectValue placeholder="Model" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="911">911</SelectItem>
-                <SelectItem value="cayenne">Cayenne</SelectItem>
-                <SelectItem value="panamera">Panamera</SelectItem>
-                <SelectItem value="macan">Macan</SelectItem>
-                <SelectItem value="taycan">Taycan</SelectItem>
-              </SelectContent>
-            </Select>
+            <Input
+              placeholder="Model"
+              className="w-full h-9 border border-gray-200 bg-white"
+            />
 
             <Select>
               <SelectTrigger className="w-full h-12 border border-gray-200 bg-white">
@@ -68,11 +60,11 @@ export function SearchSection() {
                 <SelectValue placeholder="Price Range" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="under-50k">Under $50k</SelectItem>
-                <SelectItem value="50k-100k">$50k - $100k</SelectItem>
-                <SelectItem value="100k-200k">$100k - $200k</SelectItem>
-                <SelectItem value="200k-500k">$200k - $500k</SelectItem>
-                <SelectItem value="500k+">$500k+</SelectItem>
+                <SelectItem value="under-50k">Under ₱5k</SelectItem>
+                <SelectItem value="50k-100k">₱1k - ₱2k</SelectItem>
+                <SelectItem value="100k-200k">₱3k - ₱4k</SelectItem>
+                <SelectItem value="200k-500k">₱5k - ₱6k</SelectItem>
+                <SelectItem value="500k+">₱7k+</SelectItem>
               </SelectContent>
             </Select>
           </div>

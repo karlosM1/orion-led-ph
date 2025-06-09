@@ -42,17 +42,14 @@ export const About = () => {
               </p>
             </CardContent>
           </Card>
-          <Card className="bg-[#F4F4F4] text-white md:p-8 flex items-center justify-end">
-            <div className="relative h-full w-full max-w-[600px] ml-auto">
+          <Card className="bg-[#F4F4F4] text-white flex justify-end overflow-hidden m-0 p-0">
+            <div className="relative h-64 md:h-full w-full ">
               <img
-                src={images.aboutcar}
+                src={images.aboutpic}
                 alt="Featured Car"
-                width={600}
-                height={400}
-                className="absolute inset-0 w-full h-full object-cover rounded-lg z-0"
+                className="absolute inset-0 w-full h-full object-cover rounded-lg"
                 style={{ filter: "brightness(0.7)" }}
               />
-              <CardContent className="relative z-10 bg-transparent"></CardContent>
             </div>
           </Card>
           <Card className="bg-black text-white p-5 md:p-8">

@@ -12,11 +12,11 @@ export function Footer() {
             <div className="space-y-2 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                <span>123 Luxury Ave, City</span>
+                <span>Presidents Avenue, BF Homes, Parañaque</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <span>+1 (555) 123-4567</span>
+                <span>+631234567890</span>
               </div>
             </div>
           </div>

@@ -10,11 +10,9 @@ export function WeeklyHighlight() {
       <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
         <div>
           <img
-            src={images.macan}
+            src={images.axiel}
             alt="Featured Car"
-            width={600}
-            height={400}
-            className="w-full h-auto rounded-lg"
+            className="w-full h-100 object-cover rounded-lg"
           />
         </div>
         <Card className="bg-black text-white p-5 md:p-8">
@@ -23,10 +21,19 @@ export function WeeklyHighlight() {
               ORION CHAMPION
             </h3>
             <p className="text-gray-300 mb-4 md:mb-6 text-sm md:text-base">
-              ORION LED HEADLIGHTS and FOG LIGHTS are designed to provide better
-              visibility while driving through dark, fog, and/or rain. ORION LED
-              generates lights that allow you to clearly see where you are
-              headed, especially when driving under bad weather condition.
+              At Orion PH Parañaque, you’re in good hands with Sir Axel. Our
+              head technician personally handled this upgrade—explaining the
+              process, making sure every detail was right, and delivering a
+              clean, high-performance install. The customer left with headlights
+              they can rely on and service they won’t forget.
+              <br />
+              <br />
+              ✔️ Plug and play <br />
+              ✔️ No modification <br />
+              ✔️ No hassle, just pure brightness and safety.
+              <br />
+              <br />
+              Visit us daily from 8 AM to 10 PM. Walk-ins welcome.
             </p>
           </CardContent>
         </Card>

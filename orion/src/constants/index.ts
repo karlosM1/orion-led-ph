@@ -19,6 +19,11 @@ import aboutcar from "../assets/img/about-car.png";
 import car2 from "../assets/img/car2.png";
 import logo from "../assets/img/orionlogo.png";
 import orion from "../assets/img/orion.png";
+import axiel from "../assets/img/axiel.jpg";
+import role1 from "../assets/img/role1.jpg";
+import role2 from "../assets/img/role2.jpg";
+import role3 from "../assets/img/role3.jpg";
+import aboutpic from "../assets/img/aboutpic.jpg";
 
 export const images = {
   texturatc,
@@ -42,4 +47,9 @@ export const images = {
   car2,
   logo,
   orion,
+  axiel,
+  role1,
+  role2,
+  role3,
+  aboutpic,
 };

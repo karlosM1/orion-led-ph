@@ -16,7 +16,7 @@ export function HeroSection() {
             Get Started
           </Button>
         </div>
-        <div className="relative order-1 lg:order-2">
+        <div className="relative  order-1 lg:order-2">
           <img
             src={images.porche}
             alt="Sports Car"
