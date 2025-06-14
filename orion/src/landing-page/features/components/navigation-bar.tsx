@@ -131,27 +131,20 @@ export function Header() {
                   >
                     Home
                   </Link>
-                  <a
-                    href="#"
+                  <Link
+                    to="/landing/about"
                     className="text-xl font-medium text-gray-600 hover:text-black transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     About
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="/landing/contact"
                     className="text-xl font-medium text-gray-600 hover:text-black transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    Community
-                  </a>
-                  <a
-                    href="#"
-                    className="text-xl font-medium text-gray-600 hover:text-black transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    News
-                  </a>
+                    Contact
+                  </Link>
                   <Link
                     to="/stock"
                     className="text-xl font-medium text-gray-600 hover:text-black transition-colors"
