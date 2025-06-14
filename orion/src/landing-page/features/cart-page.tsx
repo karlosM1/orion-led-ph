@@ -1,16 +1,34 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { CartItem } from "../components/cart-item";
 import { useCart, useCartTotals } from "@/lib/cart";
 import { ShoppingBag, ArrowRight, ChevronLeft } from "lucide-react";
 import { Header } from "./components/navigation-bar";
 import { Footer } from "./components/footer";
+import { useAuth } from "@/lib/auth";
 
 export function CartPage() {
   const { removeItem, updateQuantity, clearCart } = useCart();
   const { items, totalItems, totalPrice } = useCartTotals();
+
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate({
+        to: "/auth/signin",
+        search: { redirect: "/cart" },
+      });
+    }
+  }, [isAuthenticated, navigate]);
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <>

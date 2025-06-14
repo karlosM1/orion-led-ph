@@ -19,6 +19,8 @@ import { Route as StockProductIdImport } from './routes/stock/$productId'
 import { Route as LandingStockImport } from './routes/landing/stock'
 import { Route as LandingContactImport } from './routes/landing/contact'
 import { Route as LandingAboutImport } from './routes/landing/about'
+import { Route as AuthSignupImport } from './routes/auth/signup'
+import { Route as AuthSigninImport } from './routes/auth/signin'
 
 // Create/Update Routes
 
@@ -70,6 +72,18 @@ const LandingAboutRoute = LandingAboutImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const AuthSignupRoute = AuthSignupImport.update({
+  id: '/auth/signup',
+  path: '/auth/signup',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AuthSigninRoute = AuthSigninImport.update({
+  id: '/auth/signin',
+  path: '/auth/signin',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -93,6 +107,20 @@ declare module '@tanstack/react-router' {
       path: '/checkout'
       fullPath: '/checkout'
       preLoaderRoute: typeof CheckoutImport
+      parentRoute: typeof rootRoute
+    }
+    '/auth/signin': {
+      id: '/auth/signin'
+      path: '/auth/signin'
+      fullPath: '/auth/signin'
+      preLoaderRoute: typeof AuthSigninImport
+      parentRoute: typeof rootRoute
+    }
+    '/auth/signup': {
+      id: '/auth/signup'
+      path: '/auth/signup'
+      fullPath: '/auth/signup'
+      preLoaderRoute: typeof AuthSignupImport
       parentRoute: typeof rootRoute
     }
     '/landing/about': {
@@ -139,6 +167,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/auth/signin': typeof AuthSigninRoute
+  '/auth/signup': typeof AuthSignupRoute
   '/landing/about': typeof LandingAboutRoute
   '/landing/contact': typeof LandingContactRoute
   '/landing/stock': typeof LandingStockRoute
@@ -150,6 +180,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/auth/signin': typeof AuthSigninRoute
+  '/auth/signup': typeof AuthSignupRoute
   '/landing/about': typeof LandingAboutRoute
   '/landing/contact': typeof LandingContactRoute
   '/landing/stock': typeof LandingStockRoute
@@ -162,6 +194,8 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/auth/signin': typeof AuthSigninRoute
+  '/auth/signup': typeof AuthSignupRoute
   '/landing/about': typeof LandingAboutRoute
   '/landing/contact': typeof LandingContactRoute
   '/landing/stock': typeof LandingStockRoute
@@ -175,6 +209,8 @@ export interface FileRouteTypes {
     | '/'
     | '/cart'
     | '/checkout'
+    | '/auth/signin'
+    | '/auth/signup'
     | '/landing/about'
     | '/landing/contact'
     | '/landing/stock'
@@ -185,6 +221,8 @@ export interface FileRouteTypes {
     | '/'
     | '/cart'
     | '/checkout'
+    | '/auth/signin'
+    | '/auth/signup'
     | '/landing/about'
     | '/landing/contact'
     | '/landing/stock'
@@ -195,6 +233,8 @@ export interface FileRouteTypes {
     | '/'
     | '/cart'
     | '/checkout'
+    | '/auth/signin'
+    | '/auth/signup'
     | '/landing/about'
     | '/landing/contact'
     | '/landing/stock'
@@ -207,6 +247,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
+  AuthSigninRoute: typeof AuthSigninRoute
+  AuthSignupRoute: typeof AuthSignupRoute
   LandingAboutRoute: typeof LandingAboutRoute
   LandingContactRoute: typeof LandingContactRoute
   LandingStockRoute: typeof LandingStockRoute
@@ -218,6 +260,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
+  AuthSigninRoute: AuthSigninRoute,
+  AuthSignupRoute: AuthSignupRoute,
   LandingAboutRoute: LandingAboutRoute,
   LandingContactRoute: LandingContactRoute,
   LandingStockRoute: LandingStockRoute,
@@ -238,6 +282,8 @@ export const routeTree = rootRoute
         "/",
         "/cart",
         "/checkout",
+        "/auth/signin",
+        "/auth/signup",
         "/landing/about",
         "/landing/contact",
         "/landing/stock",
@@ -253,6 +299,12 @@ export const routeTree = rootRoute
     },
     "/checkout": {
       "filePath": "checkout.tsx"
+    },
+    "/auth/signin": {
+      "filePath": "auth/signin.tsx"
+    },
+    "/auth/signup": {
+      "filePath": "auth/signup.tsx"
     },
     "/landing/about": {
       "filePath": "landing/about.tsx"

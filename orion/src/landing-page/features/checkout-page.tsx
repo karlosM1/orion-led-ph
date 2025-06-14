@@ -1,8 +1,8 @@
 import type React from "react";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { useCartTotals } from "@/lib/cart";
 import { ChevronLeft } from "lucide-react";
 import { CheckoutForm } from "../components/checkout-form";
@@ -10,13 +10,22 @@ import { OrderSummary } from "../components/order-summary";
 import { toast } from "sonner";
 import { Header } from "./components/navigation-bar";
 import { Footer } from "./components/footer";
-import { useNavigate } from "@tanstack/react-router";
+import { useAuth } from "@/lib/auth";
 
 export function CheckoutPage() {
   const { items, totalPrice } = useCartTotals();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate({
+        to: "/auth/signin",
+        search: { redirect: "/checkout" },
+      });
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,6 +45,10 @@ export function CheckoutPage() {
       navigate({ to: "/landing/stock" });
     }, 500);
   };
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <>
