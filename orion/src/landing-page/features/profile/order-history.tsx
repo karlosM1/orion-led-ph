@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/select";
 import { Link } from "@tanstack/react-router";
 import { Package, Search, Eye, Download } from "lucide-react";
+import { images } from "@/constants";
 
 interface Order {
   id: string;
@@ -39,8 +40,8 @@ export function OrderHistory() {
       items: [
         {
           id: "1",
-          name: "XENON HALOGEN",
-          image: "/placeholder.svg?height=60&width=60",
+          name: "ORION MAX HVN",
+          image: images.bulb4,
           quantity: 1,
           price: 3999,
         },
@@ -54,8 +55,8 @@ export function OrderHistory() {
       items: [
         {
           id: "2",
-          name: "XENON ACTIVE",
-          image: "/placeholder.svg?height=60&width=60",
+          name: "ORION ALPHA",
+          image: images.bulb1,
           quantity: 1,
           price: 1180,
         },
@@ -69,8 +70,8 @@ export function OrderHistory() {
       items: [
         {
           id: "3",
-          name: "XENON SIGMA",
-          image: "/placeholder.svg?height=60&width=60",
+          name: "ORION SIGMA",
+          image: images.bulb15,
           quantity: 1,
           price: 970,
         },

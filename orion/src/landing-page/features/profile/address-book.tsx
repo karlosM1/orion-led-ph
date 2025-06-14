@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -68,7 +66,6 @@ export function AddressBook() {
 
   const handleSave = () => {
     if (editingId) {
-      // Update existing address
       setAddresses(
         addresses.map((addr) =>
           addr.id === editingId ? { ...addr, ...formData } : addr
@@ -76,7 +73,6 @@ export function AddressBook() {
       );
       setEditingId(null);
     } else {
-      // Add new address
       const newAddress: Address = {
         id: Date.now().toString(),
         ...formData,
