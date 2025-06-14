@@ -87,7 +87,7 @@ export function Header() {
                   </div>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
-                    <Link to="/" className="w-full">
+                    <Link to="/profile" className="w-full">
                       Profile
                     </Link>
                   </DropdownMenuItem>
@@ -116,14 +116,13 @@ export function Header() {
               </div>
             )}
 
-            {/* Mobile Navigation */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="md:hidden">
                 <Button variant="ghost" size="icon" aria-label="Menu">
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[80%] sm:w-[350px]">
+              <SheetContent side="right" className="w-[80%] sm:w-[350px] pl-4">
                 <div className="flex flex-col space-y-6 mt-8">
                   <Link
                     to="/"
@@ -179,7 +178,7 @@ export function Header() {
                         </p>
                       </div>
                       <Link
-                        to="/"
+                        to="/profile"
                         className="text-xl font-medium text-gray-600 hover:text-black transition-colors"
                         onClick={() => setIsOpen(false)}
                       >
