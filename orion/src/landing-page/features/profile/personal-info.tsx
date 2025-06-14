@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -34,7 +32,6 @@ export function PersonalInfo({ user }: PersonalInfoProps) {
   });
 
   const handleSave = () => {
-    // In a real app, this would make an API call to update user info
     toast.message("Profile updated", {
       description: "Your personal information has been updated successfully.",
     });

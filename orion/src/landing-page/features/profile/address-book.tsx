@@ -32,9 +32,9 @@ export function AddressBook() {
     {
       id: "1",
       type: "home",
-      firstName: "John",
-      lastName: "Doe",
-      street: "123 Main Street",
+      firstName: "Karlos",
+      lastName: "Serrano",
+      street: "Sampaloc",
       city: "Manila",
       state: "Metro Manila",
       zipCode: "1000",
